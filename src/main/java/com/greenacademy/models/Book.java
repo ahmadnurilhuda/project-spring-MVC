@@ -8,19 +8,19 @@ public class Book {
     private String id;
     private String title;
     private String isbn;
-    private LocalDate year;
+    private String year;
     private double price;
     private int stock;
     private String description;
     private String category;
     
 
-    public Book(String title, double price, int stock, String isbn, LocalDate year, String description, String category) {
+    public Book(String title, double price, int stock, String isbn,String year, String description, String category) {
         this.title = title;
         this.price = price;
         this.stock = stock;
         this.isbn = isbn;
-        this.year = year;
+        // this.year = year;
         this.description = description;
         this.category = category;
 
@@ -37,7 +37,7 @@ public class Book {
     public String getIsbn() {
         return isbn;
     }
-    public LocalDate getYear() {
+    public String getYear() {
         return year;
     }
     public double getPrice() {
@@ -59,7 +59,7 @@ public class Book {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
-    public void setYear(LocalDate year) {
+    public void setYear(String year) {
         this.year = year;
     }
     public void setPrice(double price) {

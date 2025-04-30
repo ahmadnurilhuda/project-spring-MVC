@@ -3,42 +3,52 @@
 <main>
     <section>
         <div>
-            <a href="./books/create">tambah buku</a>
+            <a class="btn btn-primary" href="./books/create">tambah buku</a>
         </div>
-        <div>
-        <h2>Daftar Buku</h2>
-            <div>
-                <table border="1" cellpadding="5" cellspacing="0" width="100%">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Title</th>
-                            <th>ISBN</th>
-                            <th>Year</th>
-                            <th>Price</th>
-                            <th>Stock</th>
-                            <th>Category</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+        <div class="container my-4">
+    <h2 class="mb-4">Daftar Buku</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover align-middle text-center">
+            <thead class="table-dark">
+                <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">ISBN</th>
+                    <th scope="col">Year</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach items="${booksList}" var="book" varStatus="loop">
                     <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                        <td>${loop.count}</td>
+                        <td>${book.title}</td>
+                        <td>${book.isbn}</td>
+                        <td>${book.year}</td>
                         <td>
-                            <a href="#">Edit</a>
-                            <a href="#">Delete</a>
+                            <fmt:formatNumber value="${book.price}" type="currency"
+                            currencySymbol="Rp" maxFractionDigits="0" />
+                        </td>
+                        <td>${book.stock}</td>
+                        <td>${book.category}</td>
+                        <td>${book.description}</td>
+                        <td>
+                            <%-- <a href="./books/edit/${book.id}">Edit</a>
+                            <form action="./books/delete/${book.id}" method="post" style="display:inline;">
+                                <button type="submit" onClick="return confirm('Are you sure you want to delete this book?')" >delete</button>
+                            </form> --%>
                         </td>
                     </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+                    </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
+
     </section>
 </main>
 
