@@ -1,7 +1,7 @@
 <%@ include file="/WEB-INF/views/layouts/header.jsp" %>
 <main>
 
-<h2>Form Add Book</h2>
+<h2>Form Edit Book</h2>
 <%-- <p class="text-danger">${message}</p> --%>
 
     <form action="" method="post" class="container">
@@ -22,7 +22,7 @@
                 <label class="form-label" for="isbn">ISBN Number</label>
                 <input class="form-control ${errors.getFieldError('isbn')!= null? 'is-invalid':''}" type="text" name="isbn" id="isbn" value="${book.isbn}">
                 <div class="form-text text-danger">
-                ${errors.getFieldError("isbn") != null ? errors.getFieldError("isbn").getDefaultMessage() : ""}
+                ${errors.getFieldError("title") != null ? errors.getFieldError("isbn").getDefaultMessage() : ""}
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                 <label class="form-label" for="year">Year Release</label>
                 <input class="form-control ${errors.getFieldError('year')!= null? 'is-invalid':''}" type="text" name="year" id="year" value="${book.year}">
                 <div class="form-text text-danger">
-                ${errors.getFieldError("year") != null ? errors.getFieldError("year").getDefaultMessage() : ""}
+                ${errors.getFieldError("title") != null ? errors.getFieldError("year").getDefaultMessage() : ""}
                 </div>
             </div>
             
@@ -38,15 +38,16 @@
                 <label class="form-label" for="stock">Stock</label>
                 <input class="form-control ${errors.getFieldError('stock')!= null? 'is-invalid':''}" type="number" name="stock" id="stock" value="${book.stock}">
                 <div class="form-text text-danger">
-                ${errors.getFieldError("stock") != null ? errors.getFieldError("stock").getDefaultMessage() : ""}
+                ${errors.getFieldError("title") != null ? errors.getFieldError("stock").getDefaultMessage() : ""}
                 </div>
             </div>
 
             <div class="mb-3">
                 <label class="form-label" for="price">Price</label>
-                <input class="form-control ${errors.getFieldError('price')!= null? 'is-invalid':''}" type="number" name="price" id="price" value="${book.price}">
+                <input class="form-control ${errors.getFieldError('price')!= null? 'is-invalid':''}" type="number" name="price" id="price" value="<fmt:formatNumber value="${book.price}" groupingUsed="false" maxFractionDigits="0" />">
+                
                 <div class="form-text text-danger">
-                ${errors.getFieldError("price") != null ? errors.getFieldError("price").getDefaultMessage() : ""}
+                ${errors.getFieldError("title") != null ? errors.getFieldError("price").getDefaultMessage() : ""}
                 </div>
             </div>
         </div>
@@ -57,7 +58,7 @@
                 <label class="form-label" for="category">Category</label>
                 <input class="form-control ${errors.getFieldError('category')!= null? 'is-invalid':''}" type="text" name="category" id="category" value="${book.category}">
                 <div class="form-text text-danger">
-                ${errors.getFieldError("category") != null ? errors.getFieldError("category").getDefaultMessage() : ""}
+                ${errors.getFieldError("title") != null ? errors.getFieldError("category").getDefaultMessage() : ""}
                 </div>
             </div>
 
@@ -65,7 +66,7 @@
                 <label class="form-label" for="description">Description</label>
                 <textarea class="form-control ${errors.getFieldError('description')!= null? 'is-invalid':''}" name="description" id="description">${book.description}</textarea>
                 <div class="form-text text-danger">
-                ${errors.getFieldError("description") != null ? errors.getFieldError("description").getDefaultMessage() : ""}
+                ${errors.getFieldError("title") != null ? errors.getFieldError("description").getDefaultMessage() : ""}
                 </div>
             </div>
         </div>
@@ -74,7 +75,7 @@
     <!-- Elemen Tambahan di Bawah -->
 
     <div class="mb-3">
-        <button class="btn btn-primary" type="submit">Add Book</button>
+        <button class="btn btn-primary" type="submit">Update Book</button>
     </div>
     </form>
 </main>

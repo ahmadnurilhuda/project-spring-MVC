@@ -1,26 +1,48 @@
 package com.greenacademy.models;
 
-import java.time.LocalDate;
+
 import java.util.UUID;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.Size;
 
 public class Book {
 
     private String id;
+
+    @NotBlank(message = "Title is required")
+    @Size(min = 3, max = 100, message = "Title must be between 3 and 100 characters")
     private String title;
+
+    @NotBlank(message = "ISBN is required")
     private String isbn;
+
+    @NotBlank(message = "Year is required")
     private String year;
-    private double price;
-    private int stock;
+
+    @NotNull(message = "Price is required")
+    @PositiveOrZero(message = "Price must be greater than zero")
+    private Double price;
+    
+    @NotNull(message = "Price is required")
+    @PositiveOrZero(message = "Stock must be greater than zero")
+    private Integer stock;
+
+    @NotBlank(message = "Description is required")
     private String description;
+
+    @NotBlank(message = "Category is required")
     private String category;
     
 
-    public Book(String title, double price, int stock, String isbn,String year, String description, String category) {
+    public Book(String title, Double price, Integer stock, String isbn,String year, String description, String category) {
         this.title = title;
         this.price = price;
         this.stock = stock;
         this.isbn = isbn;
-        // this.year = year;
+        this.year = year;
         this.description = description;
         this.category = category;
 
@@ -40,10 +62,10 @@ public class Book {
     public String getYear() {
         return year;
     }
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
-    public int getStock() {
+    public Integer getStock() {
         return stock;
     }
     public String getDescription() {
@@ -51,6 +73,10 @@ public class Book {
     }
     public String getCategory() {
         return category;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
@@ -62,10 +88,10 @@ public class Book {
     public void setYear(String year) {
         this.year = year;
     }
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
-    public void setStock(int stock) {
+    public void setStock(Integer stock) {
         this.stock = stock;
     }
     public void setDescription(String description) {

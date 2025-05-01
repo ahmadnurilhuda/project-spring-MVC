@@ -15,6 +15,11 @@ public class BookService {
         this.session = session;
         this.booksList = (ArrayList<Book>) session.getAttribute("booksList");
 
+        // if (this.booksList == null) {
+        //     this.booksList = new ArrayList<>();
+        //     session.setAttribute("booksList", this.booksList);
+        // }
+
     }
 // Methodes Service
 
@@ -28,7 +33,38 @@ public class BookService {
         this.session.setAttribute("booksList", booksList);
     }
 
+    public Book getBookId(String id){
+        for(Book book : booksList){
+            if(book.getId().equals(id)){
+                return book;
+            }
+        }
+        return null;
+    }
 
+    public void updateBook(Book updateBook){
+        for(Book book : booksList){
+            if(book.getId().equals(updateBook.getId())){
+                book.setTitle(updateBook.getTitle());
+                book.setIsbn(updateBook.getIsbn());
+                book.setYear(updateBook.getYear());
+                book.setPrice(updateBook.getPrice());
+                book.setStock(updateBook.getStock());
+                book.setDescription(updateBook.getDescription());
+                book.setCategory(updateBook.getCategory());
+            }
+        }
+        this.session.setAttribute("booksList", booksList);
+    }
 
-
+    public void deleteBook(String id) {
+        if (booksList != null) {
+            for (int book = 0; book < booksList.size(); book++) {
+                if (booksList.get(book).getId().equals(id)) {
+                    booksList.remove(book);
+                }
+            }
+            this.session.setAttribute("booksList", booksList);
+        }
+    }
 }
