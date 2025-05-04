@@ -34,17 +34,17 @@ public class Book {
     private String description;
 
     @NotBlank(message = "Category is required")
-    private String category;
+    private String categoryId;
     
 
-    public Book(String title, Double price, Integer stock, String isbn,String year, String description, String category) {
+    public Book(String title, Double price, Integer stock, String isbn,String year, String description, String categoryId) {
         this.title = title;
         this.price = price;
         this.stock = stock;
         this.isbn = isbn;
         this.year = year;
         this.description = description;
-        this.category = category;
+        this.categoryId = categoryId;
 
         this.id = UUID.randomUUID().toString();
     }
@@ -71,8 +71,8 @@ public class Book {
     public String getDescription() {
         return description;
     }
-    public String getCategory() {
-        return category;
+    public String getCategoryId() {
+        return categoryId;
     }
 
     public void setId(String id) {
@@ -97,8 +97,15 @@ public class Book {
     public void setDescription(String description) {
         this.description = description;
     }
-    public void setCategory(String category) {
-        this.category = category;
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
     }
 }
 
+
+
+
+// public Category getCategory(HttpSession session) {
+    //     CategoryService categoryService = new CategoryService(session);
+    //     return categoryService.getCategoryById(this.categoryId);
+    // }

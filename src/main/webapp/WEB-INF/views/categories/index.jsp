@@ -4,7 +4,7 @@
     <section class="container">
     
         <div class="container">
-            <a class="btn btn-primary" href="./books/create">tambah buku</a>
+            <a class="btn btn-primary" href="./categories/create">tambah category</a>
         </div>
 
         <div>${success}</div>
@@ -32,39 +32,26 @@
         </c:if> --%>
         
 <div class="container my-4">
-    <h2 class="mb-4">Daftar Buku</h2>
+    <h2 class="mb-4">Daftar Category</h2>
     <div class="table-responsive">
         <table class="table table-bordered table-hover align-middle text-center">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">ISBN</th>
-                    <th scope="col">Year</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Stock</th>
-                    <th scope="col">Category</th>
+                    <th scope="col">Name Category</th>
                     <th scope="col">Description</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <c:forEach items="${booksList}" var="book" varStatus="loop">
+                <c:forEach items="${categoriesList}" var="category" varStatus="loop">
                     <tr>
                         <td>${loop.count}</td>
-                        <td>${book.getBook().title}</td>
-                        <td>${book.getBook().isbn}</td>
-                        <td>${book.getBook().year}</td>
+                        <td>${category.name}</td>
+                        <td>${category.description}</td>
                         <td>
-                            <fmt:formatNumber value="${book.getBook().price}" type="currency"
-                            currencySymbol="Rp" maxFractionDigits="0" />
-                        </td>
-                        <td>${book.getBook().stock}</td>
-                        <td>${book.getCategory().name}</td>
-                        <td>${book.getBook().description}</td>
-                        <td>
-                            <a class="btn btn-edit" href="./books/edit/${book.getBook().id}">Edit</a>
-                            <form action="./books/delete/${book.getBook().id}" method="post" style="display:inline;">
+                            <a class="btn btn-edit" href="./books/edit/${category.id}">Edit</a>
+                            <form action="./books/delete/${category.id}" method="post" style="display:inline;">
                                 <button class="btn btn-delete" type="submit" onClick="return confirm('Are you sure you want to delete this book?')" >delete</button>
                             </form>
                         </td>

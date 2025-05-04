@@ -54,10 +54,19 @@
         <!-- Kolom Kanan -->
         <div class="col-md-6">
             <div class="mb-3">
-                <label class="form-label" for="category">Category</label>
-                <input class="form-control ${errors.getFieldError('category')!= null? 'is-invalid':''}" type="text" name="category" id="category" value="${book.category}">
+            
+                <label class="form-label" for="categoryId">Category</label>
+                <select name="categoryId" class="form-select ${errors.getFieldError('categoryId')!= null? 'is-invalid':''}">
+                    <option value="">Pilih Kategori</option>
+                        <c:forEach var="category" items="${categories}">
+                            <option value="${category.id}" 
+                                ${book != null && book.categoryId == category.id ? 'selected' : ''}>
+                                ${category.name}
+                            </option>
+                        </c:forEach>
+                </select>
                 <div class="form-text text-danger">
-                ${errors.getFieldError("category") != null ? errors.getFieldError("category").getDefaultMessage() : ""}
+                ${errors.getFieldError("categoryId") != null ? errors.getFieldError("categoryId").getDefaultMessage() : ""}
                 </div>
             </div>
 

@@ -14,7 +14,7 @@
     <mvc:annotation-driven/>
 
     <!-- Component Scan -->
-    <context:component-scan base-package="com.greenacademy.controllers"/>
+    <context:component-scan base-package="com.greenacademy"/>
 
     <!-- View Resolver -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
